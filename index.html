@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="BMI.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@100;300;400;500;700;800;900&family=Cairo:wght@300;400;500&family=Noto+Sans+Arabic:wght@300&display=swap"
+        rel="stylesheet">
+
+<body>
+    <div class="container">
+        <div class="box">
+            <div class="overlay"></div>
+            <h1>BMI Clculator</h1>
+            <div class="inputs-content">
+                <div class="input-weight">
+                    <label for="myWight">Weight</label>
+                    <input type="text" id="myWeight">
+                </div>
+                <div class="input-height">
+                    <label>Height</label>
+                    <input type="text" id="myHeight">
+                </div>
+                <div class="btn">
+                    <button type="button" id="myButton">Calculate BMI</button>
+                </div>
+            </div>
+            <h3 id="calbmi"> Your BMI Is:</h3>
+            <div id="bmi"></div>
+            <h4 id="result"></h4>
+        </div>
+    </div>
+
+</body>
+<script>
+    document.getElementById("myButton").addEventListener("click", function () {
+        var weight = document.getElementById("myWeight").value
+        var height = document.getElementById("myHeight").value
+        bmi_cal = weight / (height * height)
+        document.getElementById("bmi").innerHTML = bmi_cal.toFixed(2)
+
+        var bmiCategory = "نحيف"
+
+        if (bmi_cal < 18) {
+            bmiCategory = "نحيف"
+        } else if (bmi_cal < 24.9) {
+            bmiCategory = "وزن مثالي"
+        } else if (bmi_cal < 29.9) {
+            bmiCategory = "وزن زائد"
+        } else if (bmi_cal < 34.9) {
+            bmiCategory = "سمنة درجة أولى"
+        } else if (bmi_cal < 39.9) {
+            bmiCategory = "سمنة درجة ثانية"
+        } else {
+            bmiCategory = "سمنة خطيرة"
+        }
+
+        document.getElementById("result").innerHTML = bmiCategory
+    })
+</script>
+
+</html>
